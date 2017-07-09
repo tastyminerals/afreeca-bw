@@ -2,7 +2,7 @@
 This script allows you to watch afreeca.com streams via **vlc** using **streamlink** as backend.
 It uses a simple list of bw streamers which should be updated manually in case some player is missing.
 
-### Installation (Linux)
+### Installation (archlinux/manjaro, use your distro package manager otherwise)
 1. Make sure you have **vlc** installed.
 ```
 sudo pacman -S vlc
