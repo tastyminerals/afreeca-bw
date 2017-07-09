@@ -1,11 +1,12 @@
 #!/bin/bash
 # afreeca stream switcher
 
-# Available streams: audio, high, low, medium, mobile (worst), source (best)
-QUALITY="best"
+# available streams: gs_sd (worst), aws_sd, gs_hd, aws_hd, gs_original, aws_original (best)
+QUALITY="aws_original"
 
 # player - afreeca id map
 declare -A players=(
+ ["shine"]="lyh8808"
  ["afstar"]="afstar1"
  ["stork"]="koreasbg"
  ["asl2"]="afstar1"
@@ -116,6 +117,7 @@ declare -A players=(
 
 while true; do
   read -p "Play stream: " INPUT
+  INPUT=${INPUT,,}  # lowercase
   if [[ "$INPUT" == "exit" ]]; then
     exit 0
   fi
@@ -125,16 +127,30 @@ while true; do
     echo ""
     continue
   fi
-  if [[ "$INPUT" == "!best" ]]; then
-      QUALITY="best"
-      echo "Stream quality: high"
-      continue
-  elif [[ "$INPUT" == "!worst" ]]; then
-      QUALITY="worst"
-      echo "Stream quality: worst"
+  if [ -z $INPUT ]; then
+      echo "Please provide player's name or check who's online via !online command"
+      echo "You can also set a stream quality via !original, !hd or !sd commands"
+      echo -e "Type exit to quit\n"
       continue
   fi
-  echo "Starting " ${players[$INPUT]} " stream (it might take a while), be patient..."
+  if [[ "$INPUT" == "!original" ]]; then
+      QUALITY="aws_original"
+      echo -e "Stream quality: aws_original\n"
+      continue
+  elif [[ "$INPUT" == "!hd" ]]; then
+      QUALITY="aws_hd"
+      echo -e "Stream quality: aws_hd\n"
+      continue
+  elif [[ "$INPUT" == "!sd" ]]; then
+      QUALITY="aws_sd"
+      echo -e "Stream quality: aws_sd\n"
+      continue
+  fi
+  if [ -z ${players[$INPUT]} ]; then
+      echo "Uh-oh, $INPUT does not exist in the player's list :("
+      echo -e "Check if you typed it correctly or add it to the list yourself ;)\n"
+      continue
+  fi
+  echo -e "Starting " ${players[$INPUT]} " stream (it might take a while), be patient...\n"
   streamlink --quiet --loglevel=error --player="/usr/bin/vlc --file-caching=5000 --network-caching=5000 --meta-title=$INPUT" afreeca.com/${players[$INPUT]} $QUALITY &
-  echo "Playing " ${players[$INPUT]}"..."
 done
