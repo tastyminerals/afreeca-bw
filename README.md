@@ -22,7 +22,7 @@ sudo cp afreeca_vlc.sh /usr/local/bin
 ### Usage
 
 ```
-./afreeca_vlc.sh 
+$ afreeca_vlc.sh 
 Play stream: !online
 
 Shuttle Protoss 1322 35872 Now
@@ -54,4 +54,5 @@ Play stream: mini
 Starting  bye1013  stream (it might take a while), be patient...
 
 Play stream: exit
+$
 ```
