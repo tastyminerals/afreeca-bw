@@ -1,11 +1,12 @@
 #!/bin/bash
 # afreeca stream switcher
 
-# available streams: gs_sd (worst), aws_sd, gs_hd, aws_hd, gs_original, aws_original (best)
+# available streams: live_hls, live (best, worst)
 QUALITY="live"
 
 # player - afreeca id map
 declare -A players=(
+ ["reach"]="reach12"
  ["shine"]="lyh8808"
  ["afstar"]="afstar1"
  ["stork"]="koreasbg"
@@ -133,17 +134,13 @@ while true; do
       echo -e "Type exit to quit\n"
       continue
   fi
-  if [[ "$INPUT" == "!original" ]]; then
-      QUALITY="aws_original"
-      echo -e "Stream quality: aws_original\n"
+  if [[ "$INPUT" == "!live_hls" ]]; then
+      QUALITY="live_hls"
+      echo -e "Stream quality: best\n"
       continue
-  elif [[ "$INPUT" == "!hd" ]]; then
-      QUALITY="aws_hd"
-      echo -e "Stream quality: aws_hd\n"
-      continue
-  elif [[ "$INPUT" == "!sd" ]]; then
-      QUALITY="aws_sd"
-      echo -e "Stream quality: aws_sd\n"
+  elif [[ "$INPUT" == "!live" ]]; then
+      QUALITY="live"
+      echo -e "Stream quality: live\n"
       continue
   fi
   if [ -z ${players[$INPUT]} ]; then
