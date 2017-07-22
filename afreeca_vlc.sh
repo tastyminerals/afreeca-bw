@@ -2,7 +2,7 @@
 # afreeca stream switcher
 
 # available streams: gs_sd (worst), aws_sd, gs_hd, aws_hd, gs_original, aws_original (best)
-QUALITY="aws_original"
+QUALITY="live"
 
 # player - afreeca id map
 declare -A players=(
