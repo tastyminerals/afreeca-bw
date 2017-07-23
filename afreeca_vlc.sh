@@ -1,12 +1,12 @@
 #!/bin/bash
 # afreeca stream switcher
 
-# available streams: live_hls, live (best, worst)
-QUALITY="live"
+# available streams: gs_sd (worst), aws_sd, gs_hd, aws_hd, gs_original, aws_original (best)
+QUALITY="aws_original"
 
 # player - afreeca id map
 declare -A players=(
- ["reach"]="reach12"
+ ["horang"]="rudals5467"
  ["shine"]="lyh8808"
  ["afstar"]="afstar1"
  ["stork"]="koreasbg"
@@ -118,7 +118,6 @@ declare -A players=(
 
 while true; do
   read -p "Play stream: " INPUT
-  INPUT=${INPUT,,}  # lowercase
   if [[ "$INPUT" == "exit" ]]; then
     exit 0
   fi
@@ -134,20 +133,24 @@ while true; do
       echo -e "Type exit to quit\n"
       continue
   fi
-  if [[ "$INPUT" == "!live_hls" ]]; then
-      QUALITY="live_hls"
-      echo -e "Stream quality: best\n"
+  if [[ "$INPUT" == "!original" ]]; then
+      QUALITY="aws_original"
+      echo -e "Stream quality: aws_original\n"
       continue
-  elif [[ "$INPUT" == "!live" ]]; then
-      QUALITY="live"
-      echo -e "Stream quality: live\n"
+  elif [[ "$INPUT" == "!hd" ]]; then
+      QUALITY="aws_hd"
+      echo -e "Stream quality: aws_hd\n"
+      continue
+  elif [[ "$INPUT" == "!sd" ]]; then
+      QUALITY="aws_sd"
+      echo -e "Stream quality: aws_sd\n"
       continue
   fi
-  if [ -z ${players[$INPUT]} ]; then
-      echo "Uh-oh, $INPUT does not exist in the player's list :("
+  if [ -z ${players[${INPUT,,}]} ]; then
+      echo "Uh-oh, ${INPUT,,} does not exist in the player's list :("
       echo -e "Check if you typed it correctly or add it to the list yourself ;)\n"
       continue
   fi
-  echo -e "Starting " ${players[$INPUT]} " stream (it might take a while), be patient...\n"
+  echo -e "Starting " ${players[${INPUT,,}]} " stream (it might take a while), be patient...\n"
   streamlink --quiet --loglevel=error --player="/usr/bin/vlc --file-caching=5000 --network-caching=5000 --meta-title=$INPUT" afreeca.com/${players[$INPUT]} $QUALITY &
 done
