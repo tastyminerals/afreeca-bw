@@ -6,6 +6,7 @@ QUALITY="gs_original"
 
 # player - afreeca id map
 declare -A players=(
+ ["asl"]="aslenglish"
  ["horang"]="rudals5467"
  ["shine"]="lyh8808"
  ["afstar"]="afstar1"
