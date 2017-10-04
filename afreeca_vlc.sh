@@ -1,6 +1,10 @@
 #!/bin/bash
 # afreeca stream switcher
 
+# useful constants
+URL="https://afreecabw.appspot.com/"
+HDR="Player Race Viewers High Avail"
+
 # available streams: aws_sd (worst), aws_hd, aws_original (best)
 QUALITY="aws_original"
 
@@ -124,7 +128,12 @@ while true; do
   fi
   if [[ "$INPUT" == "!online" ]]; then
     echo ""
-    curl -s https://afreecabw.appspot.com/ | sed -e '/<tr class="offline show">/,+7d' | awk  -F '[<>]' 'BEGIN {ORS=" "}; /<td / { gsub(/<b>/, ""); sub(/ .*/, "", $3); print $3 } ' | sed s'/  /\n/'g
+    { echo $HDR ; curl -s $URL \
+     | sed -e '/<tr class="offline show">/,+8d' \
+     | awk -F '[<>]' 'BEGIN {ORS=" "}; /<td / { print $3 }' \
+     | sed s'/Now  /Now\n/'g \
+     | sed s'/  / unknown /' ;
+    } | column -t
     echo ""
     continue
   fi
