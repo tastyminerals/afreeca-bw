@@ -6,6 +6,7 @@ URL="https://afreecabw.appspot.com/"
 HDR="Player Race Viewers High Avail"
 
 # available streams: aws_sd (worst), aws_hd, aws_original (best)
+# gs_original, aws_original
 QUALITY="aws_original"
 
 # player - afreeca id map
@@ -145,15 +146,15 @@ while true; do
   fi
   if [[ "$INPUT" == "!original" ]]; then
       QUALITY="aws_original"
-      echo -e "Stream quality: gs_original\n"
+      echo -e "Stream quality: aws_original\n"
       continue
   elif [[ "$INPUT" == "!hd" ]]; then
       QUALITY="aws_hd"
-      echo -e "Stream quality: gs_hd\n"
+      echo -e "Stream quality: aws_hd\n"
       continue
   elif [[ "$INPUT" == "!sd" ]]; then
       QUALITY="aws_sd"
-      echo -e "Stream quality: gs_sd\n"
+      echo -e "Stream quality: aws_sd\n"
       continue
   fi
   if [ -z ${players[${INPUT,,}]} ]; then
@@ -162,5 +163,6 @@ while true; do
       continue
   fi
   echo -e "Starting " ${players[${INPUT,,}]} " stream (it might take a while), be patient...\n"
+
   streamlink --quiet --loglevel=error --player="/usr/bin/vlc --file-caching=5000 --network-caching=5000 --meta-title=$INPUT" afreeca.com/${players[$INPUT]} $QUALITY &
 done

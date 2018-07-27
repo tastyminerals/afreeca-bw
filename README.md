@@ -25,34 +25,24 @@ sudo cp afreeca_vlc.sh /usr/local/bin
 $ afreeca_vlc.sh 
 Play stream: !online
 
-Player   Race     Viewers  High    Avail
-TerrOr   Zerg     25852    129726  Now
-FlaSh    Terran   3968     73755   Now
-Effort   Zerg     1423     25522   Now
-Mind     Terran   513      14185   Now
-hero     Zerg     309      20901   Now
-Last     Terran   276      10163   Now
-BySun    Protoss  265      10566   Now
-Soulkey  Zerg     258      12856   Now
-GuemChi  Protoss  230      14275   Now
-BeSt     Protoss  192      21616   Now
-Mini     Protoss  163      1200    Now
-leto     unknown  163      2020    Now
-zeus     Protoss  147      35052   Now
-Rock     Protoss  104      6733    Now
-Iris     Terran   52       1667    Now
-July     Zerg     49       3005    Now
-Hyuk     Zerg     31       407     Now
-Calm     Zerg     29       4814    Now
-Shinee   Terran   26       3353    Now
-jat.tv   unknown  21       3216    Now
-Sharp    Terran   19       2453    Now
-trOt     Terran   17       1845    Now
-IcaruS   Terran   16       985     Now
-MIsO     Zerg     15       1570    Now
-Nal_rA   Protoss  11       29174   Now
-Sexy     Terran   3        389     Now
-LoveTV   unknown  0        2279    Now
+Shuttle Protoss 1322 35872 Now
+Effort Zerg 1102 25522 Now
+GuemChi Protoss 528 14275 Now
+BeSt Protoss 287 21616 Now
+Last Terran 224 10163 Now
+Snow Protoss 131 880 Now
+Mini Protoss 90 1125 Now
+Sharp Terran 74 2453 Now
+leto
+65 2020 Now
+BySun Protoss 51 10566 Now
+LoveTV
+39 2279 Now
+Rush Terran 38 2312 Now
+IcaruS Terran 30 985 Now
+Movie Protoss 23 5876 Now
+Nal_rA Protoss 12 29174 Now
+Force[name] Zerg 3 190 Now
 
 Play stream: last
 Starting  rlatjdgus228  stream (it might take a while), be patient...
@@ -64,4 +54,5 @@ Play stream: mini
 Starting  bye1013  stream (it might take a while), be patient...
 
 Play stream: exit
+$
 ```
