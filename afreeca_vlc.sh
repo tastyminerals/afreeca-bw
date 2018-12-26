@@ -7,7 +7,7 @@ HDR="Player Race Viewers High Avail"
 
 # available streams: aws_sd (worst), aws_hd, aws_original (best)
 # gs_original, aws_original
-QUALITY="aws_original"
+QUALITY="original"
 
 # player - afreeca id map
 declare -A players=(
@@ -145,15 +145,15 @@ while true; do
       continue
   fi
   if [[ "$INPUT" == "!original" ]]; then
-      QUALITY="aws_original"
+      QUALITY="original"
       echo -e "Stream quality: aws_original\n"
       continue
   elif [[ "$INPUT" == "!hd" ]]; then
-      QUALITY="aws_hd"
+      QUALITY="hd"
       echo -e "Stream quality: aws_hd\n"
       continue
   elif [[ "$INPUT" == "!sd" ]]; then
-      QUALITY="aws_sd"
+      QUALITY="sd"
       echo -e "Stream quality: aws_sd\n"
       continue
   fi
