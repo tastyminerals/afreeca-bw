@@ -11,7 +11,7 @@ sudo pacman -S vlc
 ```
 sudo pacman -S streamlink
 ```
-3. Use `afreecatv.py` (which is provided in this repo) to replace the one installed with **streamlink**.
+3. Use `afreeca.py` (which is provided in this repo) to replace the one installed with **streamlink**.
 ```
 sudo cp afreeca.py /usr/lib/python3.6/site-packages/streamlink/plugins/afreeca.py
 ```
